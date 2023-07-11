@@ -99,7 +99,7 @@ namespace FUIEditor
             ExportedComponentInfos.Clear();
             ExtralExportURLs.Clear();
 
-            string fuiAssetsDir = Application.dataPath + "/../../FGUIProject/assets";
+            string fuiAssetsDir = Application.dataPath + "/../../X-ET7-UI/assets";
             string[] packageDirs = Directory.GetDirectories(fuiAssetsDir);
             foreach (var packageDir in packageDirs)
             {

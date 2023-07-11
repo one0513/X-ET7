@@ -11,7 +11,6 @@ namespace ET.Client
 			UIObjectFactory.SetPackageItemExtension(ET.Client.TestB.FUI_TestBPanel.URL, typeof(ET.Client.TestB.FUI_TestBPanel));
 			UIObjectFactory.SetPackageItemExtension(ET.Client.TestB.FUI_OneComponent.URL, typeof(ET.Client.TestB.FUI_OneComponent));
 			UIObjectFactory.SetPackageItemExtension(ET.Client.TestB.FUI_TestCPanel.URL, typeof(ET.Client.TestB.FUI_TestCPanel));
-			UIObjectFactory.SetPackageItemExtension(ET.Client.TestB.FUI_TestDPanel.URL, typeof(ET.Client.TestB.FUI_TestDPanel));
 		}
 	}
 }
