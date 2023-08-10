@@ -8,6 +8,11 @@ namespace ET.Client
     {
         public static async ETTask Login(Scene clientScene, string account, string password)
         {
+            //登入流程
+            //1.初始化软路由，通过http获取远端的json文件，json文件内容为：软路由的公网IP和端口号  网关均衡服务器（Realm）的内网IP和端口号
+            //网关均衡服务器的端口不需要对外开发,主要是为了创建一个关联网关服务器的主要是为了创建一个关联网关服务器的session，从而获取网关服务器的IP和端口号,和网关连接成功后，所有消息通过网关转发
+            //2.通过网关均衡服务器的session 进行登入请求，如果账号验证成功，则下发网关的内网IP和端口号
+            //3.获取网关的地址后，建立网关session，后续客户端通过这个session与服务器通讯
             try
             {
                 // 创建一个ETModel层的Session
