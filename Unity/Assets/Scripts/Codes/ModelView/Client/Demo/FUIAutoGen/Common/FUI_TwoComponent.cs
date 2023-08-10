@@ -9,6 +9,7 @@ namespace ET.Client.Common
 	{
 		public GTextField title;
 		public ET.Client.Common.FUI_CommonBtn OneBtn;
+		public GScrollBar scrobar;
 		public const string URL = "ui://f2boiu4iw6rg3";
 
 		public static FUI_TwoComponent CreateInstance()
@@ -22,6 +23,7 @@ namespace ET.Client.Common
 
 			title = (GTextField)GetChildAt(1);
 			OneBtn = (ET.Client.Common.FUI_CommonBtn)GetChildAt(2);
+			scrobar = (GScrollBar)GetChildAt(3);
 		}
 	}
 }

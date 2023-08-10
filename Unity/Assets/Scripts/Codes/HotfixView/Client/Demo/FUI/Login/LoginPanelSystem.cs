@@ -1,4 +1,5 @@
 using System;
+using FairyGUI;
 using UnityEngine;
 
 namespace ET.Client
@@ -19,6 +20,8 @@ namespace ET.Client
 		{
 			var context = (LoginPanel_ContextData)contextData;
 			Log.Info(context.Data);
+
+
 		}
 
 		public static void OnHide(this LoginPanel self)

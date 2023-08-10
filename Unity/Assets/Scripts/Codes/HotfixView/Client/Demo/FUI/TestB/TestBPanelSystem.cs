@@ -1,3 +1,4 @@
+
 namespace ET.Client
 {
 	public static class TestBPanelSystem
@@ -12,13 +13,15 @@ namespace ET.Client
 		{
 			self.FUITestBPanel.OpenTestCBtn.AddListner(() =>
 			{
-				var fuiCom = self.ClientScene().GetComponent<FUIComponent>();
+				TipsHelp.ShowTips(RandomGenerator.RandInt64().ToString());
 				
-				TestCPanel_ContextData testCPanelContextData = fuiCom.AddChild<TestCPanel_ContextData>();
-				TestBPanel_ContextData testBPanelContextData = (TestBPanel_ContextData)self.GetParent<FUIEntity>().ContextData;
-				testCPanelContextData.Data = testBPanelContextData.Data;
-				
-				fuiCom.HideAndShowPanelStackAsync(PanelId.TestBPanel, PanelId.TestCPanel, testCPanelContextData).Coroutine();
+				// var fuiCom = self.ClientScene().GetComponent<FUIComponent>();
+				//
+				// TestCPanel_ContextData testCPanelContextData = fuiCom.AddChild<TestCPanel_ContextData>();
+				// TestBPanel_ContextData testBPanelContextData = (TestBPanel_ContextData)self.GetParent<FUIEntity>().ContextData;
+				// testCPanelContextData.Data = testBPanelContextData.Data;
+				//
+				// fuiCom.HideAndShowPanelStackAsync(PanelId.TestBPanel, PanelId.TestCPanel, testCPanelContextData).Coroutine();
 			});
 			
 			self.FUITestBPanel.CloseBtn.AddListner(() =>
