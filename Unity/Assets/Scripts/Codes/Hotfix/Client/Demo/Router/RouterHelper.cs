@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net;
 using System.Net.Sockets;
+using System.Text;
 
 namespace ET.Client
 {
@@ -24,7 +25,24 @@ namespace ET.Client
             
             return routerSession;
         }
-        
+
+        public static HttpGetRouterResponse GetRealAdress(HttpGetRouterResponse info)
+        {
+            for (int i = 0; i < info.Routers.Count; i++)
+            {
+                string[] ss = info.Routers[i].Split('.');
+                int real;
+                int.TryParse(ss[0], out real);
+                ss[0] = (real-5).ToString();
+                int.TryParse(ss[1], out real);
+                ss[1] = (real-6).ToString();
+                int.TryParse(ss[2], out real);
+                ss[2] = (real-7).ToString();
+                string adress = $"{ss[0]}.{ss[1]}.{ss[2]}.{ss[3]}";
+                info.Routers[i] = adress;
+            }
+            return info;
+        }
         public static async ETTask<(uint, IPEndPoint)> GetRouterAddress(Scene clientScene, IPEndPoint address, uint localConn, uint remoteConn)
         {
             Log.Info($"start get router address: {clientScene.Id} {address} {localConn} {remoteConn}");
