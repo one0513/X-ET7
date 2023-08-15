@@ -114,11 +114,11 @@ namespace ET.Client
         /// <summary>
         /// 显示界面。没有 contextData 的重载
         /// </summary>
-        public static async ETTask ShowPanelAsync(this FUIComponent self, PanelId id)
+        public static async ETTask ShowPanelAsync(this FUIComponent self, PanelId id,UIPanelType type = UIPanelType.Normal)
         {
             try
             {
-                FUIEntity fuiEntity = await self.ShowFUIEntityAsync(id);
+                FUIEntity fuiEntity = await self.ShowFUIEntityAsync(id,type);
                 if (fuiEntity != null)
                 {
                     self.RealShowPanel(fuiEntity, id);
@@ -194,7 +194,52 @@ namespace ET.Client
                 fuiEntity.IsUsingStack = true;
             }
         }
+        
+        /// <summary>
+        /// 从弹出界面打开新的弹窗
+        /// </summary>
+        public static async ETTask ShowSecondPanelAsync(this FUIComponent self, PanelId id)
+        {
+            try
+            {
+                //弹窗的Id
+                PanelId closePanelId = self.VisiblePanelsQueue[self.VisiblePanelsQueue.Count - 1];
+                FUIEntity closeEntity = self.GetFUIEntity(closePanelId);
+                closeEntity.GComponent.TweenMoveY(GRoot.inst.height + closeEntity.GComponent.height * 0.5f, 0.3f).SetEase(EaseType.SineOut);
+                
+                FUIEntity fuiEntity = await self.ShowFUIEntityAsync(id,UIPanelType.PopUp);
+                if (fuiEntity != null)
+                {
+                    self.RealShowPanel(fuiEntity, id);
+                }
+            }
+            catch (Exception e)
+            {
+                Log.Error(e);
+            }
+        }
+        
+        /// <summary>
+        /// 隐藏从弹出界面打开的界面
+        /// </summary>
+        /// <OtherParam name="id"></OtherParam>
+        public static void HideSecondPanel(this FUIComponent self, PanelId id, Entity contextData = null)
+        {
+            if (!self.VisiblePanelsDic.TryGetValue((int)id, out FUIEntity fuiEntity))
+            {
+                return;
+            }
 
+            //弹窗的Id
+            PanelId openPanelId = self.VisiblePanelsQueue[self.VisiblePanelsQueue.Count - 2];
+            FUIEntity openEntity = self.GetFUIEntity(openPanelId);
+            openEntity.GComponent.TweenMoveY(GRoot.inst.height * 0.5f, 0.3f).SetEase(EaseType.SineOut).SetDelay(0.2f);
+            
+            self.CheckDirectlyHide(id);
+        }
+        
+        
+        
         /// <summary>
         /// 隐藏ID指定的UI窗口。如果之前使用 HideAndShowPanelStackAsync() 显示，则调用 HideAndPopPanelStack()，否则调用 CheckDirectlyHide()。
         /// </summary>
@@ -263,7 +308,7 @@ namespace ET.Client
             }
         }
 
-        private static async ETTask<FUIEntity> ShowFUIEntityAsync(this FUIComponent self, PanelId id)
+        private static async ETTask<FUIEntity> ShowFUIEntityAsync(this FUIComponent self, PanelId id,UIPanelType type = UIPanelType.Normal)
         {
             CoroutineLock coroutineLock = null;
             try
@@ -276,16 +321,14 @@ namespace ET.Client
                 {
                     fuiEntity = self.AddChild<FUIEntity>(true);
                     fuiEntity.PanelId = id;
-                    await self.LoadFUIEntitysAsync(fuiEntity);
+                    await self.LoadFUIEntitysAsync(fuiEntity,type);
                 }
 
                 if (!fuiEntity.IsPreLoad)
                 {
-                    await self.LoadFUIEntitysAsync(fuiEntity);
+                    await self.LoadFUIEntitysAsync(fuiEntity,type);
                 }
-                
                 return fuiEntity;
-
             }
             catch (Exception e)
             {
@@ -427,6 +470,14 @@ namespace ET.Client
             if (fuiEntity.PanelCoreData.panelType == UIPanelType.PopUp)
             {
                 self.VisiblePanelsQueue.Add(id);
+                
+                //弹出效果
+                fuiEntity.GComponent.pivot = new Vector2(0.5f, 0.5f);
+                fuiEntity.GComponent.xy = new Vector2(GRoot.inst.width*0.5f,  -fuiEntity.GComponent.height * 0.5f);
+                fuiEntity.GComponent.TweenMoveY(GRoot.inst.height*0.5f + 180, 0.3f).SetEase(EaseType.SineOut).OnComplete((() =>
+                {
+                    fuiEntity.GComponent.TweenMoveY(GRoot.inst.height * 0.5f, 0.2f);
+                }));
             }
 
             fuiEntity.GComponent.visible = true;
@@ -447,8 +498,23 @@ namespace ET.Client
  
             if (fuiEntity != null && !fuiEntity.IsDisposed)
             {
-                fuiEntity.GComponent.visible = false;
-                FUIEventComponent.Instance.GetUIEventHandler(id).OnHide(fuiEntity);
+                if (fuiEntity.PanelCoreData.panelType == UIPanelType.PopUp)
+                {
+                    fuiEntity.GComponent.TweenMoveY(GRoot.inst.height*0.5f + 180, 0.2f).SetEase(EaseType.SineOut).OnComplete(() =>
+                    {
+                        fuiEntity.GComponent.TweenMoveY( -fuiEntity.GComponent.height * 0.5f, 0.3f).SetEase(EaseType.SineOut).OnComplete(() =>
+                        {
+                            fuiEntity.GComponent.visible = false;
+                            FUIEventComponent.Instance.GetUIEventHandler(id).OnHide(fuiEntity);
+                        });;
+                    });
+                }
+                else
+                {
+                    fuiEntity.GComponent.visible = false;
+                    FUIEventComponent.Instance.GetUIEventHandler(id).OnHide(fuiEntity);
+                }
+               
             }
 
             self.VisiblePanelsDic.Remove((int)id);
@@ -459,7 +525,7 @@ namespace ET.Client
         /// <summary>
         /// 异步加载
         /// </summary>
-        private static async ETTask LoadFUIEntitysAsync(this FUIComponent self, FUIEntity fuiEntity)
+        private static async ETTask LoadFUIEntitysAsync(this FUIComponent self, FUIEntity fuiEntity,UIPanelType type = UIPanelType.Normal)
         {
             if (!FUIEventComponent.Instance.PanelIdInfoDict.TryGetValue(fuiEntity.PanelId, out PanelInfo panelInfo))
             {
@@ -473,7 +539,7 @@ namespace ET.Client
             fuiEntity.GComponent = await self.CreateObjectAsync(panelInfo.PackageName, panelInfo.ComponentName);
 
             fuiEventHandler.OnInitPanelCoreData(fuiEntity);
-
+            fuiEntity.PanelCoreData.panelType = type;
             // 设置根节点
             fuiEntity.SetRoot(FUIRootHelper.GetTargetRoot(fuiEntity.PanelCoreData.panelType));
 

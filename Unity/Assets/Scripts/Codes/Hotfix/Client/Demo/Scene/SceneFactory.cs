@@ -1,4 +1,6 @@
+using System.Net;
 using System.Net.Sockets;
+using ET.Server;
 
 namespace ET.Client
 {

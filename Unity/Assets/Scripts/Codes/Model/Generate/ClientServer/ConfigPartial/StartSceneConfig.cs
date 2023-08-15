@@ -22,6 +22,11 @@ namespace ET
 
         public StartSceneConfig BenchmarkServer;
         
+        public StartSceneConfig AccountConfig;
+        
+        public StartSceneConfig LoginCenterConfig;
+        
+        
         public List<StartSceneConfig> GetByProcess(int process)
         {
             return this.ProcessScenes[process];
@@ -63,6 +68,12 @@ namespace ET
                         break;
                     case SceneType.BenchmarkServer:
                         this.BenchmarkServer = startSceneConfig;
+                        break;
+                    case SceneType.Account:
+                        this.AccountConfig = startSceneConfig;
+                        break;
+                    case SceneType.LoginCenter:
+                        this.LoginCenterConfig = startSceneConfig;
                         break;
                 }
             }

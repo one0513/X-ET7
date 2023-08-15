@@ -8,6 +8,8 @@ namespace ET.Client
 		HotUpdatePanel,
 		LobbyPanel,
 		LoginPanel,
+		RegisterPanel,
+		RegisterRulePanel,
 		TestAPanel,
 		TestBPanel,
 		TestCPanel,

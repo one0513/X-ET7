@@ -378,6 +378,124 @@ namespace ET
 
 	}
 
+	[ResponseType(nameof(L2A_LoginAccountResponse))]
+	[Message(InnerMessage.A2L_LoginAccountRequest)]
+	[ProtoContract]
+	public partial class A2L_LoginAccountRequest: ProtoObject, IActorRequest
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(1)]
+		public string AccountId { get; set; }
+
+	}
+
+	[Message(InnerMessage.L2A_LoginAccountResponse)]
+	[ProtoContract]
+	public partial class L2A_LoginAccountResponse: ProtoObject, IActorResponse
+	{
+		[ProtoMember(1)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(2)]
+		public int Error { get; set; }
+
+		[ProtoMember(3)]
+		public string Message { get; set; }
+
+	}
+
+	[ResponseType(nameof(A2R_LoginAccountResponse))]
+	[Message(InnerMessage.R2A_LoginAccountRequest)]
+	[ProtoContract]
+	public partial class R2A_LoginAccountRequest: ProtoObject, IActorRequest
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(1)]
+		public string Account { get; set; }
+
+		[ProtoMember(2)]
+		public string Password { get; set; }
+
+	}
+
+	[Message(InnerMessage.A2R_LoginAccountResponse)]
+	[ProtoContract]
+	public partial class A2R_LoginAccountResponse: ProtoObject, IActorResponse
+	{
+		[ProtoMember(1)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(2)]
+		public int Error { get; set; }
+
+		[ProtoMember(3)]
+		public string Message { get; set; }
+
+	}
+
+	[ResponseType(nameof(G2L_DisconnectGateUnit))]
+	[Message(InnerMessage.L2G_DisconnectGateUnit)]
+	[ProtoContract]
+	public partial class L2G_DisconnectGateUnit: ProtoObject, IActorRequest
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(1)]
+		public string AccountId { get; set; }
+
+	}
+
+	[Message(InnerMessage.G2L_DisconnectGateUnit)]
+	[ProtoContract]
+	public partial class G2L_DisconnectGateUnit: ProtoObject, IActorResponse
+	{
+		[ProtoMember(1)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(2)]
+		public int Error { get; set; }
+
+		[ProtoMember(3)]
+		public string Message { get; set; }
+
+	}
+
+	[ResponseType(nameof(L2G_AddLoginRecord))]
+	[Message(InnerMessage.G2L_AddLoginRecord)]
+	[ProtoContract]
+	public partial class G2L_AddLoginRecord: ProtoObject, IActorRequest
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(1)]
+		public long AccountId { get; set; }
+
+		[ProtoMember(2)]
+		public int ServerId { get; set; }
+
+	}
+
+	[Message(InnerMessage.L2G_AddLoginRecord)]
+	[ProtoContract]
+	public partial class L2G_AddLoginRecord: ProtoObject, IActorResponse
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+	}
+
 	public static class InnerMessage
 	{
 		 public const ushort ObjectQueryRequest = 20002;
@@ -403,5 +521,13 @@ namespace ET
 		 public const ushort ObjectQueryResponse = 20022;
 		 public const ushort M2M_UnitTransferRequest = 20023;
 		 public const ushort M2M_UnitTransferResponse = 20024;
+		 public const ushort A2L_LoginAccountRequest = 20025;
+		 public const ushort L2A_LoginAccountResponse = 20026;
+		 public const ushort R2A_LoginAccountRequest = 20027;
+		 public const ushort A2R_LoginAccountResponse = 20028;
+		 public const ushort L2G_DisconnectGateUnit = 20029;
+		 public const ushort G2L_DisconnectGateUnit = 20030;
+		 public const ushort G2L_AddLoginRecord = 20031;
+		 public const ushort L2G_AddLoginRecord = 20032;
 	}
 }

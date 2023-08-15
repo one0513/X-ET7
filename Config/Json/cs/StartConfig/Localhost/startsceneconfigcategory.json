@@ -48,6 +48,22 @@
     "OuterPort": 0
   },
   {
+    "Id": 7,
+    "Process": 1,
+    "Zone": 1,
+    "SceneType": "Account",
+    "Name": "Account",
+    "OuterPort": 0
+  },
+  {
+    "Id": 8,
+    "Process": 1,
+    "Zone": 1,
+    "SceneType": "LoginCenter",
+    "Name": "LoginCenter",
+    "OuterPort": 0
+  },
+  {
     "Id": 200,
     "Process": 1,
     "Zone": 2,

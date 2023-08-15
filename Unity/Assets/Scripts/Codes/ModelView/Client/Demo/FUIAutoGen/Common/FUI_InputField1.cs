@@ -8,8 +8,6 @@ namespace ET.Client.Common
 	public partial class FUI_InputField1: GComponent
 	{
 		public GTextInput Input;
-		public GTextField simpleText;
-		public GRichTextField richText;
 		public const string URL = "ui://f2boiu4iab9e2";
 
 		public static FUI_InputField1 CreateInstance()
@@ -22,8 +20,6 @@ namespace ET.Client.Common
 			base.ConstructFromXML(xml);
 
 			Input = (GTextInput)GetChildAt(1);
-			simpleText = (GTextField)GetChildAt(2);
-			richText = (GRichTextField)GetChildAt(3);
 		}
 	}
 }

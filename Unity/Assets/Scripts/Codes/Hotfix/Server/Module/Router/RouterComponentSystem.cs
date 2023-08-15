@@ -234,6 +234,7 @@ namespace ET.Server
 
                     if (!routerNode.CheckOuterCount(timeNow))
                     {
+                        //收到的包太频繁 1秒大于10个包
                         self.OnError(routerNode.Id, ErrorCore.ERR_KcpRouterTooManyPackets);
                     }
 

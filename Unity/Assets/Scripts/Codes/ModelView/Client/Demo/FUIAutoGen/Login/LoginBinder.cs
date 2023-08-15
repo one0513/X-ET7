@@ -9,6 +9,8 @@ namespace ET.Client
 		public static void BindAll()
 		{
 			UIObjectFactory.SetPackageItemExtension(ET.Client.Login.FUI_LoginPanel.URL, typeof(ET.Client.Login.FUI_LoginPanel));
+			UIObjectFactory.SetPackageItemExtension(ET.Client.Login.FUI_RegisterPanel.URL, typeof(ET.Client.Login.FUI_RegisterPanel));
+			UIObjectFactory.SetPackageItemExtension(ET.Client.Login.FUI_RegisterRulePanel.URL, typeof(ET.Client.Login.FUI_RegisterRulePanel));
 		}
 	}
 }

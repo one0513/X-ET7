@@ -19,7 +19,10 @@ namespace ET
 		BenchmarkClient = 1 << 11,
 		BenchmarkServer = 1 << 12,
 		Benchmark = 1 << 13,
+		Account = 1 << 14,
+		LoginCenter = 1 << 15,
 
+		
 		// 客户端Model层
 		Client = 1 << 30,
 		Current = 1ul << 31,

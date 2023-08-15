@@ -15,6 +15,9 @@ namespace ET.Client
 			UIObjectFactory.SetPackageItemExtension(ET.Client.Common.FUI_ProgressBar1.URL, typeof(ET.Client.Common.FUI_ProgressBar1));
 			UIObjectFactory.SetPackageItemExtension(ET.Client.Common.FUI_TwoComponent.URL, typeof(ET.Client.Common.FUI_TwoComponent));
 			UIObjectFactory.SetPackageItemExtension(ET.Client.Common.FUI_BigTipPanel.URL, typeof(ET.Client.Common.FUI_BigTipPanel));
+			UIObjectFactory.SetPackageItemExtension(ET.Client.Common.FUI_InputField2.URL, typeof(ET.Client.Common.FUI_InputField2));
+			UIObjectFactory.SetPackageItemExtension(ET.Client.Common.FUI_InputField3.URL, typeof(ET.Client.Common.FUI_InputField3));
+			UIObjectFactory.SetPackageItemExtension(ET.Client.Common.FUI_CloseBtn.URL, typeof(ET.Client.Common.FUI_CloseBtn));
 		}
 	}
 }
