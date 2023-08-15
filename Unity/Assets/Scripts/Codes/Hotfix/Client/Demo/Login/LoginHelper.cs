@@ -9,7 +9,7 @@ namespace ET.Client
     
     public static class LoginHelper
     {
-        public static async ETTask<int> Login(Scene clientScene, string account, string password, Action onError = null)
+        public static async ETTask<int> Login(Scene clientScene, string account, string password, bool isRegister = false,Action onError = null)
         {
             if (!Regex.IsMatch(account.Trim(), @"[a-zA-Z0-9_]{5,15}"))
             {
@@ -32,8 +32,8 @@ namespace ET.Client
                 Session realmSession = await GetRealmSession(clientScene,account);
                 
                 R2C_Login r2CLogin;
-                //密码使用md5加密 数据库不存真实密码
-                r2CLogin = (R2C_Login) await realmSession.Call(new C2R_Login() { Account = account, Password = MD5Helper.StringMD5(password)});
+                //密码使用md5加密 数据库不存真实密码 偷懒 注册直接丢登入的协议里面 补个字段判断
+                r2CLogin = (R2C_Login) await realmSession.Call(new C2R_Login() { Account = account, Password = MD5Helper.StringMD5(password),IsRegister = isRegister?1:0});
 
                 //账号验证失败
                 if (r2CLogin.Error != ErrorCode.ERR_Success)

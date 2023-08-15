@@ -15,7 +15,7 @@ namespace ET.Server
 
 			//通知Account服务器处理账号相关请求
 			A2R_LoginAccountResponse loginAccountResponse = (A2R_LoginAccountResponse) await ActorMessageSenderComponent.Instance.Call(
-				accountInstanceId, new R2A_LoginAccountRequest() {Account = request.Account, Password = request.Password});
+				accountInstanceId, new R2A_LoginAccountRequest() {Account = request.Account, Password = request.Password,IsRegister = request.IsRegister});
 			if (loginAccountResponse.Error != ErrorCode.ERR_Success)
 			{
 				response.Error = loginAccountResponse.Error;

@@ -329,6 +329,9 @@ namespace ET
 		[ProtoMember(3)]
 		public string Password { get; set; }
 
+		[ProtoMember(4)]
+		public int IsRegister { get; set; }
+
 	}
 
 	[Message(OuterMessage.R2C_Login)]

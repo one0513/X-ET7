@@ -420,6 +420,9 @@ namespace ET
 		[ProtoMember(2)]
 		public string Password { get; set; }
 
+		[ProtoMember(3)]
+		public int IsRegister { get; set; }
+
 	}
 
 	[Message(InnerMessage.A2R_LoginAccountResponse)]

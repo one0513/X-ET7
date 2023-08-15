@@ -51,6 +51,9 @@ namespace ET.Client
 				case ErrorCode.ERR_LoginInfoError:
 					TipsHelp.ShowTips("账号或密码错误");
 					break;
+				case ErrorCode.ERR_AccountNotExist:
+					TipsHelp.ShowTips("账号不存在");
+					break;
 				case ErrorCode.ERR_AccountMessaFormatError:
 					TipsHelp.ShowTips("请输入5-15位的账号密码");
 					break;

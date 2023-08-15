@@ -20,6 +20,7 @@ namespace ET
         public const int ERR_AccountInBlackListError = 200005; //账号在黑名单
         public const int ERR_RequestRepeatedly = 200006; //频繁请求
         public const int ERR_OtherAccountLogin = 200007;//顶号登入
+        public const int ERR_AccountNotExist = 200008;//账号不存在
         
         // 300000 - 310000 客户端框架异常
         public const int ERR_ResourceInitError = 300000;            // 资源初始化失败

@@ -52,8 +52,15 @@ namespace ET.Server
 				}
 				else
 				{
+					//偷懒 可以补充独立账号注册逻辑
+					if (request.IsRegister == 0)//0为账号登入
+					{
+						response.Error = ErrorCode.ERR_AccountNotExist;
+						return;
+					}
+					
 					//数据库没有账号则自动创建账号
-					//todo： 补充独立账号注册逻辑
+					
 					account = unit.AddChild<Account>();
 					account.accountName = request.Account;
 					account.password = request.Password;
