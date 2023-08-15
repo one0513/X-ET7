@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 
 namespace ET.Server
@@ -8,8 +9,7 @@ namespace ET.Server
 		public static StartSceneConfig GetGate(int zone,string account)
 		{
 			List<StartSceneConfig> zoneGates = StartSceneConfigCategory.Instance.Gates[zone];
-
-			int n = account.GetHashCode() % zoneGates.Count;
+			int n = Math.Abs(account.GetHashCode()) % zoneGates.Count;
 
 			return zoneGates[n];
 		}

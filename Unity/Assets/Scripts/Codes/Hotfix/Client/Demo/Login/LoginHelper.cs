@@ -1,6 +1,7 @@
 using System;
 using System.Net;
 using System.Net.Sockets;
+using System.Text.RegularExpressions;
 
 namespace ET.Client
 {
@@ -10,6 +11,16 @@ namespace ET.Client
     {
         public static async ETTask<int> Login(Scene clientScene, string account, string password, Action onError = null)
         {
+            if (!Regex.IsMatch(account.Trim(), @"[a-zA-Z0-9_]{5,15}"))
+            {
+                return ErrorCode.ERR_AccountMessaFormatError;
+            }
+
+            if (!Regex.IsMatch(password.Trim(), @"[a-zA-Z0-9_]{5,15}"))
+            {
+                return ErrorCode.ERR_AccountMessaFormatError;
+            }
+            
             //登入流程
             //1.初始化软路由，通过http获取远端的json文件，json文件内容为：软路由的公网IP和端口号  网关均衡服务器（Realm）的内网IP和端口号
             //网关均衡服务器的端口不需要对外开发,主要是为了创建一个关联网关服务器的主要是为了创建一个关联网关服务器的session，从而获取网关服务器的IP和端口号,和网关连接成功后，所有消息通过网关转发

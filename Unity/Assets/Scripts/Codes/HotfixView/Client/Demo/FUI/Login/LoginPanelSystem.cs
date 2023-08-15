@@ -52,7 +52,7 @@ namespace ET.Client
 					TipsHelp.ShowTips("账号或密码错误");
 					break;
 				case ErrorCode.ERR_AccountMessaFormatError:
-					TipsHelp.ShowTips("请输入6-15位的账号密码");
+					TipsHelp.ShowTips("请输入5-15位的账号密码");
 					break;
 				default:
 						TipsHelp.ShowTips("网络错误"); break;
