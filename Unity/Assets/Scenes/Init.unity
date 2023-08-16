@@ -275,6 +275,120 @@ MonoBehaviour:
     f: 0
     b: 0
     c: {r: 0, g: 0, b: 0, a: 0}
+  - valid: 0
+    s: 
+    i: 0
+    f: 0
+    b: 0
+    c: {r: 0, g: 0, b: 0, a: 0}
+  - valid: 0
+    s: 
+    i: 0
+    f: 0
+    b: 0
+    c: {r: 0, g: 0, b: 0, a: 0}
+  - valid: 0
+    s: 
+    i: 0
+    f: 0
+    b: 0
+    c: {r: 0, g: 0, b: 0, a: 0}
+  - valid: 0
+    s: 
+    i: 0
+    f: 0
+    b: 0
+    c: {r: 0, g: 0, b: 0, a: 0}
+  - valid: 0
+    s: 
+    i: 0
+    f: 0
+    b: 0
+    c: {r: 0, g: 0, b: 0, a: 0}
+  - valid: 0
+    s: 
+    i: 0
+    f: 0
+    b: 0
+    c: {r: 0, g: 0, b: 0, a: 0}
+  - valid: 0
+    s: 
+    i: 0
+    f: 0
+    b: 0
+    c: {r: 0, g: 0, b: 0, a: 0}
+  - valid: 0
+    s: 
+    i: 0
+    f: 0
+    b: 0
+    c: {r: 0, g: 0, b: 0, a: 0}
+  - valid: 0
+    s: 
+    i: 0
+    f: 0
+    b: 0
+    c: {r: 0, g: 0, b: 0, a: 0}
+  - valid: 0
+    s: 
+    i: 0
+    f: 0
+    b: 0
+    c: {r: 0, g: 0, b: 0, a: 0}
+  - valid: 0
+    s: 
+    i: 0
+    f: 0
+    b: 0
+    c: {r: 0, g: 0, b: 0, a: 0}
+  - valid: 0
+    s: 
+    i: 0
+    f: 0
+    b: 0
+    c: {r: 0, g: 0, b: 0, a: 0}
+  - valid: 0
+    s: 
+    i: 0
+    f: 0
+    b: 0
+    c: {r: 0, g: 0, b: 0, a: 0}
+  - valid: 0
+    s: 
+    i: 0
+    f: 0
+    b: 0
+    c: {r: 0, g: 0, b: 0, a: 0}
+  - valid: 0
+    s: 
+    i: 0
+    f: 0
+    b: 0
+    c: {r: 0, g: 0, b: 0, a: 0}
+  - valid: 0
+    s: 
+    i: 0
+    f: 0
+    b: 0
+    c: {r: 0, g: 0, b: 0, a: 0}
+  - valid: 0
+    s: 
+    i: 0
+    f: 0
+    b: 0
+    c: {r: 0, g: 0, b: 0, a: 0}
+  - valid: 0
+    s: 
+    i: 0
+    f: 0
+    b: 0
+    c: {r: 0, g: 0, b: 0, a: 0}
+  - valid: 1
+    s: 
+    i: 0
+    f: 0
+    b: 0
+    c: {r: 0, g: 0, b: 0, a: 1}
   PreloadPackages: []
 --- !u!1 &630054495
 GameObject:

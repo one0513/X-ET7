@@ -13,14 +13,37 @@ namespace ET.Client
 
 		public static void RegisterUIEvent(this LoginPanel self)
 		{
-			self.FUILoginPanel.LoginBtn.AddListnerAsync(self.Login);
+			self.FUILoginPanel.btnSure.AddListnerAsync(self.Login);
 			
-			self.FUILoginPanel.register.onClick.Add(self.OnClickRegister);
+			self.FUILoginPanel.btnRe.AddListner(self.OnClickRegister);
+			
+			self.FUILoginPanel.cbPW.onChanged.Add(()=> {
+				//记住密码取消勾选时 强行取消勾选自动登录
+				if (!self.FUILoginPanel.cbPW.selected)
+				{
+					self.FUILoginPanel.cbAuto.selected = false;
+					PlayerPrefs.SetInt("IsSavePW",0);
+				}
+				else
+				{
+					PlayerPrefs.SetInt("IsSavePW",1);
+				}
+					
+				
+				
+			});
 		}
 
 		public static void OnShow(this LoginPanel self, Entity contextData = null)
 		{
+			self.FUILoginPanel.inputAN.text = PlayerPrefs.GetString("Account", "");
 			var context = (LoginPanel_ContextData)contextData;
+			if (PlayerPrefs.GetInt("IsSavePW",0) != 0)
+			{
+				self.FUILoginPanel.cbPW.selected = true;
+				self.FUILoginPanel.inputPW.text = PlayerPrefs.GetString("PassWord","");
+			}
+			
 			Log.Info(context.Data);
 
 
@@ -42,11 +65,17 @@ namespace ET.Client
 		}
 		private static async ETTask Login(this LoginPanel self)
 		{
-			int erro = await LoginHelper.Login(self.DomainScene(), self.FUILoginPanel.AccountInput.Input.text, self.FUILoginPanel.PasswordInput.Input.text);
+			PlayerPrefs.SetString("Account", self.FUILoginPanel.inputAN.text);
+			int erro = await LoginHelper.Login(self.DomainScene(), self.FUILoginPanel.inputAN.text, self.FUILoginPanel.inputPW.text);
 			switch (erro)
 			{
 				case ErrorCode.ERR_Success:
 					TipsHelp.ShowTips("登入成功");
+					if (PlayerPrefs.GetInt("IsSavePW",0) != 0)
+					{
+						PlayerPrefs.SetString("PassWord",self.FUILoginPanel.inputPW.text);
+					}
+					
 					break;
 				case ErrorCode.ERR_LoginInfoError:
 					TipsHelp.ShowTips("账号或密码错误");

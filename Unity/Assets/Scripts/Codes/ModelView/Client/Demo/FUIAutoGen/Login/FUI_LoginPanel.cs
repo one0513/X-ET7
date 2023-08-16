@@ -7,11 +7,16 @@ namespace ET.Client.Login
 {
 	public partial class FUI_LoginPanel: GComponent
 	{
-		public ET.Client.Common.FUI_InputField1 AccountInput;
-		public ET.Client.Common.FUI_InputField2 PasswordInput;
-		public ET.Client.Common.FUI_CommonBtn LoginBtn;
-		public ET.Client.Common.FUI_CommonBtn register ;
-		public const string URL = "ui://rgfb0w498omm0";
+		public Transition show;
+		public Transition hide;
+		public Transition t2;
+		public GButton cbPW;
+		public GButton cbAuto;
+		public ET.Client.Common.FUI_NormalBtn btnRe;
+		public ET.Client.Common.FUI_NormalBtn btnSure;
+		public GTextInput inputAN;
+		public GTextInput inputPW;
+		public const string URL = "ui://rgfb0w49p7d24";
 
 		public static FUI_LoginPanel CreateInstance()
 		{
@@ -22,10 +27,15 @@ namespace ET.Client.Login
 		{
 			base.ConstructFromXML(xml);
 
-			AccountInput = (ET.Client.Common.FUI_InputField1)GetChildAt(1);
-			PasswordInput = (ET.Client.Common.FUI_InputField2)GetChildAt(2);
-			LoginBtn = (ET.Client.Common.FUI_CommonBtn)GetChildAt(3);
-			register  = (ET.Client.Common.FUI_CommonBtn)GetChildAt(4);
+			show = GetTransitionAt(0);
+			hide = GetTransitionAt(1);
+			t2 = GetTransitionAt(2);
+			cbPW = (GButton)GetChildAt(3);
+			cbAuto = (GButton)GetChildAt(4);
+			btnRe = (ET.Client.Common.FUI_NormalBtn)GetChildAt(5);
+			btnSure = (ET.Client.Common.FUI_NormalBtn)GetChildAt(6);
+			inputAN = (GTextInput)GetChildAt(9);
+			inputPW = (GTextInput)GetChildAt(10);
 		}
 	}
 }

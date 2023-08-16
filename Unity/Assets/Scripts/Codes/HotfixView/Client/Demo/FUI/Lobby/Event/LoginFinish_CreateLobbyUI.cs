@@ -9,7 +9,7 @@ namespace ET.Client
         {
             FUIComponent fuiComponent = scene.GetComponent<FUIComponent>();
             fuiComponent.HidePanel(PanelId.LoginPanel);
-            await fuiComponent.ShowPanelAsync(PanelId.LobbyPanel);
+            await fuiComponent.ShowPanelAsync(PanelId.ServerPanel);
         }
     }
 }

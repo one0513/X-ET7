@@ -36,8 +36,13 @@ namespace ET.Client
             self.VisiblePanelsDic?.Clear();
             self.VisiblePanelsQueue?.Clear();
             self.HidePanelsStack?.Clear();
+            self.VisiblePopupPanelsQueue?.Clear();
 
             FUIBinder.BindAll();
+            
+            GlobalComponent.Instance.PopUpGRoot.AddChild(GRoot.inst.modalLayer);
+            GRoot.inst.modalLayer.alpha = 0;
+            GRoot.inst.modalLayer.visible = false;
         }
         
         public static void Destroy(this FUIComponent self)
@@ -430,6 +435,7 @@ namespace ET.Client
             self.AllPanelsDic.Clear();
             self.FUIEntitylistCached.Clear();
             self.VisiblePanelsQueue.Clear();
+            self.VisiblePopupPanelsQueue.Clear();
             self.HidePanelsStack.Clear();
         }
 
@@ -461,6 +467,7 @@ namespace ET.Client
                 }
             }
 
+            self.VisiblePopupPanelsQueue.Clear();
             self.VisiblePanelsQueue.Clear();
             self.HidePanelsStack.Clear();
         }
@@ -469,7 +476,10 @@ namespace ET.Client
         {
             if (fuiEntity.PanelCoreData.panelType == UIPanelType.PopUp)
             {
-                self.VisiblePanelsQueue.Add(id);
+                self.VisiblePopupPanelsQueue.Add(id);
+                
+                GRoot.inst.modalLayer.visible = true;
+                GRoot.inst.modalLayer.TweenFade(0.85f,0.2f);
                 
                 //弹出效果
                 fuiEntity.GComponent.pivot = new Vector2(0.5f, 0.5f);
@@ -479,7 +489,7 @@ namespace ET.Client
                     fuiEntity.GComponent.TweenMoveY(GRoot.inst.height * 0.5f, 0.2f);
                 }));
             }
-
+            self.VisiblePanelsQueue.Add(id);
             fuiEntity.GComponent.visible = true;
 
             self.VisiblePanelsDic[(int)id] = fuiEntity;
@@ -500,12 +510,25 @@ namespace ET.Client
             {
                 if (fuiEntity.PanelCoreData.panelType == UIPanelType.PopUp)
                 {
+                    self.VisiblePopupPanelsQueue.Remove(id);
+
+
+                    GRoot.inst.modalLayer.visible = true;
+                    GRoot.inst.modalLayer.TweenFade(0.85f,0.2f);
                     fuiEntity.GComponent.TweenMoveY(GRoot.inst.height*0.5f + 180, 0.2f).SetEase(EaseType.SineOut).OnComplete(() =>
                     {
                         fuiEntity.GComponent.TweenMoveY( -fuiEntity.GComponent.height * 0.5f, 0.3f).SetEase(EaseType.SineOut).OnComplete(() =>
                         {
                             fuiEntity.GComponent.visible = false;
                             FUIEventComponent.Instance.GetUIEventHandler(id).OnHide(fuiEntity);
+                            
+                            if (self.VisiblePopupPanelsQueue.Count <= 0)
+                            {
+                                GRoot.inst.modalLayer.TweenFade(0, 0.2f).OnComplete(() =>
+                                {
+                                    GRoot.inst.modalLayer.visible = false;
+                                });
+                            }
                         });;
                     });
                 }

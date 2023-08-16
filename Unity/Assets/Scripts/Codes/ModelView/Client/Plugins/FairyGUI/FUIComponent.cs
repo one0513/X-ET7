@@ -11,6 +11,7 @@ namespace ET.Client
     [ComponentOf(typeof(Scene))]
     public class FUIComponent : Entity,IAwake,IDestroy
     {
+        public List<PanelId> VisiblePopupPanelsQueue = new List<PanelId>(10);
         public List<PanelId> VisiblePanelsQueue = new List<PanelId>(10);
         
         public Dictionary<int, FUIEntity> AllPanelsDic = new Dictionary<int, FUIEntity>(10);
