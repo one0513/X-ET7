@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace ET.Client
 {
 	[FriendOf(typeof(MainPanel))]
@@ -9,6 +11,10 @@ namespace ET.Client
 
 		public static void RegisterUIEvent(this MainPanel self)
 		{
+			self.FUIMainPanel.btnTest.AddListner(() =>
+			{
+				LineHelp.ShowLine(self.FUIMainPanel.btnTest.xy,Vector2.zero);
+			});
 		}
 
 		public static void OnShow(this MainPanel self, Entity contextData = null)

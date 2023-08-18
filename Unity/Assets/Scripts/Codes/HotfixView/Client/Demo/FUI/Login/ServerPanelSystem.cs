@@ -10,6 +10,10 @@ namespace ET.Client
 		public static void RegisterUIEvent(this ServerPanel self)
 		{
 			self.FUIServerPanel.btnChange.AddListner(self.OnclickBtnChange);
+			self.FUIServerPanel.btnBegin.AddListner(() =>
+			{
+				self.DomainScene().GetComponent<FUIComponent>().HideAndShowPanelStackAsync(PanelId.ServerPanel,PanelId.MainPanel).Coroutine();
+			});
 		}
 
 		private static void OnclickBtnChange(this ServerPanel self)
