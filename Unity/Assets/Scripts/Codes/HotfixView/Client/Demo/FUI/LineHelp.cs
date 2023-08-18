@@ -1,6 +1,7 @@
 ﻿using ET.Client.Main;
 using FairyGUI;
 using UnityEngine;
+using Spine.Unity;
 
 namespace ET.Client
 {
@@ -18,6 +19,7 @@ namespace ET.Client
                 line = FUI_Line.CreateInstance();
                 line.SetSize(0,0);
                 GlobalComponent.Instance.PopUpGRoot.AddChild(line);
+
             }
 
             if (starPos != Vector2.zero)

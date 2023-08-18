@@ -1,4 +1,5 @@
 using FairyGUI;
+using Spine.Unity;
 using UnityEngine;
 
 namespace ET.Client
@@ -42,11 +43,28 @@ namespace ET.Client
 				//LineHelp.HideLine();
 				//LineHelp.ShowLine(self.FUIMainPanel.btnTest.xy,Vector2.zero);
 			});
+			
+			self.FUIMainPanel.MoveBg.onTouchMove.Add(() =>
+			{
+				self.FUIMainPanel.Player.displayObject.gameObject.GetComponentInChildren<SkeletonAnimation>().AnimationName = "run";
+			});
+			self.FUIMainPanel.MoveBg.onTouchEnd.Add(() =>
+			{
+				self.FUIMainPanel.Player.displayObject.gameObject.GetComponentInChildren<SkeletonAnimation>().AnimationName = "idle_1";
+			});
 		}
 
 		public static void OnShow(this MainPanel self, Entity contextData = null)
 		{
 			self.FUIMainPanel.btnTest.title = "测试";
+			GameObject prefab = ResComponent.Instance.LoadAsset<GameObject>("Knight");
+			GameObject go = UnityEngine.Object.Instantiate(prefab);
+
+			go.transform.position = Vector3.zero;
+			self.FUIMainPanel.Player.SetNativeObject(new GoWrapper(go));
+			var _catBoatSpine = self.FUIMainPanel.Player.displayObject.gameObject.GetComponentInChildren<SkeletonAnimation>();
+			_catBoatSpine.loop = true;
+			_catBoatSpine.AnimationName = "idle_1";
 		}
 
 		public static void OnHide(this MainPanel self)

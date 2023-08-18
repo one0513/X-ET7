@@ -9,7 +9,8 @@
         "YooAsset.Editor",
         "Unity.Loader",
         "HybridCLR.Runtime",
-        "HybridCLR.Editor"
+        "HybridCLR.Editor",
+        "spine-unity-editor"
     ],
     "includePlatforms": [
         "Editor"
