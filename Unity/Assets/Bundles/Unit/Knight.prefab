@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1345836402912208163}
   - component: {fileID: 1345836402912208172}
   - component: {fileID: 1345836402912208173}
+  - component: {fileID: 4869746072061208300}
   m_Layer: 0
   m_Name: Knight
   m_TagString: Untagged
@@ -121,6 +122,32 @@ MonoBehaviour:
   _animationName: idle_3
   loop: 1
   timeScale: 1
+--- !u!61 &4869746072061208300
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1345836402912208175}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.6550832, y: 1.6884809}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 3.6190138, y: 3.650906}
+  m_EdgeRadius: 0
 --- !u!1 &1439222831082553356
 GameObject:
   m_ObjectHideFlags: 0
@@ -132,7 +159,7 @@ GameObject:
   - component: {fileID: 4181630175233811497}
   m_Layer: 0
   m_Name: Knight
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -1,3 +1,4 @@
+using ET.Client.Main;
 using FairyGUI;
 using Spine.Unity;
 using UnityEngine;
@@ -24,17 +25,12 @@ namespace ET.Client
 			{
 				Vector2 nowPos = GRoot.inst.GlobalToLocal(new Vector2(eventData.inputEvent.x, eventData.inputEvent.y));
 				LineHelp.ShowLine(Vector2.zero,nowPos);
+
+				if (Stage.isTouchOnUI && GRoot.inst.touchTarget.name == "Player")
+				{
+				}
 			});
 			
-			self.FUIMainPanel.btnTest.onRollOver.Add(() =>
-			{
-				self.FUIMainPanel.btnTest.scale = new Vector2(2, 2);
-			});
-			
-			self.FUIMainPanel.btnTest.onRollOut.Add(() =>
-			{
-				self.FUIMainPanel.btnTest.scale = new Vector2(1, 1);
-			});
 			
 			self.FUIMainPanel.btnTest.onTouchEnd.Add(LineHelp.HideLine);
 			
@@ -46,12 +42,23 @@ namespace ET.Client
 			
 			self.FUIMainPanel.MoveBg.onTouchMove.Add(() =>
 			{
-				self.FUIMainPanel.Player.displayObject.gameObject.GetComponentInChildren<SkeletonAnimation>().AnimationName = "run";
+				self.FUIMainPanel.Player.player.displayObject.gameObject.GetComponentInChildren<SkeletonAnimation>().AnimationName = "run";
 			});
 			self.FUIMainPanel.MoveBg.onTouchEnd.Add(() =>
 			{
-				self.FUIMainPanel.Player.displayObject.gameObject.GetComponentInChildren<SkeletonAnimation>().AnimationName = "idle_1";
+				self.FUIMainPanel.Player.player.displayObject.gameObject.GetComponentInChildren<SkeletonAnimation>().AnimationName = "idle_1";
 			});
+			self.FUIMainPanel.Player.onRollOver.Add(() =>
+			{
+				self.FUIMainPanel.Player.player.displayObject.gameObject.GetComponentInChildren<SkeletonAnimation>().AnimationName = "sword_attack";
+				self.FUIMainPanel.Player.onSelect.selectedIndex = (int)FUI_Player.onSelectPage.on;
+				
+			} );
+			self.FUIMainPanel.Player.onRollOut.Add(() =>
+			{
+				self.FUIMainPanel.Player.player.displayObject.gameObject.GetComponentInChildren<SkeletonAnimation>().AnimationName = "idle_1";
+				self.FUIMainPanel.Player.onSelect.selectedPage = "off";
+			} );
 		}
 
 		public static void OnShow(this MainPanel self, Entity contextData = null)
@@ -61,10 +68,11 @@ namespace ET.Client
 			GameObject go = UnityEngine.Object.Instantiate(prefab);
 
 			go.transform.position = Vector3.zero;
-			self.FUIMainPanel.Player.SetNativeObject(new GoWrapper(go));
+			self.FUIMainPanel.Player.player.SetNativeObject(new GoWrapper(go));
 			var _catBoatSpine = self.FUIMainPanel.Player.displayObject.gameObject.GetComponentInChildren<SkeletonAnimation>();
 			_catBoatSpine.loop = true;
 			_catBoatSpine.AnimationName = "idle_1";
+			self.FUIMainPanel.Player.onSelect.selectedPage = "off";
 		}
 
 		public static void OnHide(this MainPanel self)

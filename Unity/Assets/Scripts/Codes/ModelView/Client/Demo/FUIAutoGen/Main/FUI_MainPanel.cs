@@ -9,7 +9,7 @@ namespace ET.Client.Main
 	{
 		public ET.Client.Main.FUI_MainMoveBg MoveBg;
 		public ET.Client.Common.FUI_NormalBtn btnTest;
-		public GGraph Player;
+		public ET.Client.Main.FUI_Player Player;
 		public const string URL = "ui://9dh52fkao4sh5";
 
 		public static FUI_MainPanel CreateInstance()
@@ -23,7 +23,7 @@ namespace ET.Client.Main
 
 			MoveBg = (ET.Client.Main.FUI_MainMoveBg)GetChildAt(0);
 			btnTest = (ET.Client.Common.FUI_NormalBtn)GetChildAt(2);
-			Player = (GGraph)GetChildAt(3);
+			Player = (ET.Client.Main.FUI_Player)GetChildAt(3);
 		}
 	}
 }

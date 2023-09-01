@@ -11,6 +11,8 @@ namespace ET.Client
 			UIObjectFactory.SetPackageItemExtension(ET.Client.Main.FUI_MainPanel.URL, typeof(ET.Client.Main.FUI_MainPanel));
 			UIObjectFactory.SetPackageItemExtension(ET.Client.Main.FUI_MainMoveBg.URL, typeof(ET.Client.Main.FUI_MainMoveBg));
 			UIObjectFactory.SetPackageItemExtension(ET.Client.Main.FUI_Line.URL, typeof(ET.Client.Main.FUI_Line));
+			UIObjectFactory.SetPackageItemExtension(ET.Client.Main.FUI_Player.URL, typeof(ET.Client.Main.FUI_Player));
+			UIObjectFactory.SetPackageItemExtension(ET.Client.Main.FUI_Monster.URL, typeof(ET.Client.Main.FUI_Monster));
 		}
 	}
 }

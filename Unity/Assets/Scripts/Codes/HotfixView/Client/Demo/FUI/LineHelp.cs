@@ -33,13 +33,6 @@ namespace ET.Client
                 SetPointPos(endPos);
             }
             
-            if (Stage.isTouchOnUI)
-            {
-                //print("鼠标或者手指在UI上");
-                //可以通过这种方式 得到鼠标或者手指指向的UI对象
-                Debug.Log(GRoot.inst.touchTarget.name);
-            }
-            
             line.visible = true;
         }
         

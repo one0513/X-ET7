@@ -27,7 +27,7 @@ namespace ET.Client.Login
 
 			show = GetTransitionAt(0);
 			hide = GetTransitionAt(1);
-			listLeft = (GList)GetChildAt(0);
+			listLeft = (GList)GetChildAt(2);
 			txtName = (GTextField)GetChildAt(7);
 			imgState = (GLoader)GetChildAt(8);
 			txtRange = (GTextField)GetChildAt(9);
