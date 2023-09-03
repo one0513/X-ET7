@@ -1,0 +1,36 @@
+[
+  {
+    "Id": 1000,
+    "Name": "Buff/Buff_1001/Prefabs/Buff_1001.prefab",
+    "Description": -1,
+    "Icon": "Head",
+    "StatusSlot": 1,
+    "EffectId": [
+      0,
+      0,
+      0
+    ],
+    "Type": [
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "Id": 1002,
+    "Name": "Buff/Buff_1001/Prefabs/Buff_1001.prefab",
+    "Description": 1000,
+    "Icon": "Head",
+    "StatusSlot": 0,
+    "EffectId": [
+      0,
+      0,
+      0
+    ],
+    "Type": [
+      0,
+      0,
+      0
+    ]
+  }
+]

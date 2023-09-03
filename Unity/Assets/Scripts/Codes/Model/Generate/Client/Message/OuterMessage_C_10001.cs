@@ -552,6 +552,153 @@ namespace ET
 
 	}
 
+	[Message(OuterMessage.C2M_UseSkill)]
+	[ProtoContract]
+	public partial class C2M_UseSkill: ProtoObject, IActorLocationMessage
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(1)]
+		public int SkillConfigId { get; set; }
+
+		[ProtoMember(2)]
+		public long Id { get; set; }
+
+		[ProtoMember(3)]
+		public float X { get; set; }
+
+		[ProtoMember(4)]
+		public float Y { get; set; }
+
+		[ProtoMember(5)]
+		public float Z { get; set; }
+
+	}
+
+	[Message(OuterMessage.M2C_UseSkill)]
+	[ProtoContract]
+	public partial class M2C_UseSkill: ProtoObject, IActorMessage
+	{
+		[ProtoMember(1)]
+		public int Error { get; set; }
+
+		[ProtoMember(2)]
+		public int SkillConfigId { get; set; }
+
+		[ProtoMember(3)]
+		public long Sender { get; set; }
+
+		[ProtoMember(4)]
+		public long Reciver { get; set; }
+
+		[ProtoMember(5)]
+		public float X { get; set; }
+
+		[ProtoMember(6)]
+		public float Y { get; set; }
+
+		[ProtoMember(7)]
+		public float Z { get; set; }
+
+	}
+
+	[Message(OuterMessage.M2C_AddBuff)]
+	[ProtoContract]
+	public partial class M2C_AddBuff: ProtoObject, IActorMessage
+	{
+		[ProtoMember(1)]
+		public int Error { get; set; }
+
+		[ProtoMember(2)]
+		public int ConfigId { get; set; }
+
+		[ProtoMember(3)]
+		public long Timestamp { get; set; }
+
+		[ProtoMember(4)]
+		public long UnitId { get; set; }
+
+		[ProtoMember(5)]
+		public long SourceId { get; set; }
+
+	}
+
+	[Message(OuterMessage.M2C_Damage)]
+	[ProtoContract]
+	public partial class M2C_Damage: ProtoObject, IActorMessage
+	{
+		[ProtoMember(1)]
+		public int Error { get; set; }
+
+		[ProtoMember(2)]
+		public long FromId { get; set; }
+
+		[ProtoMember(3)]
+		public long ToId { get; set; }
+
+		[ProtoMember(4)]
+		public long Damage { get; set; }
+
+		[ProtoMember(5)]
+		public long NowBase { get; set; }
+
+	}
+
+	[Message(OuterMessage.M2C_ChangeSkillGroup)]
+	[ProtoContract]
+	public partial class M2C_ChangeSkillGroup: ProtoObject, IActorMessage
+	{
+		[ProtoMember(1)]
+		public int Error { get; set; }
+
+		[ProtoMember(2)]
+		public long UnitId { get; set; }
+
+		[ProtoMember(3)]
+		public int Result { get; set; }
+
+		[ProtoMember(4)]
+		public long Timestamp { get; set; }
+
+	}
+
+	[Message(OuterMessage.M2C_RemoveBuff)]
+	[ProtoContract]
+	public partial class M2C_RemoveBuff: ProtoObject, IActorMessage
+	{
+		[ProtoMember(1)]
+		public int Error { get; set; }
+
+		[ProtoMember(2)]
+		public int ConfigId { get; set; }
+
+		[ProtoMember(3)]
+		public long Timestamp { get; set; }
+
+		[ProtoMember(4)]
+		public long UnitId { get; set; }
+
+	}
+
+	[Message(OuterMessage.M2C_Interrupt)]
+	[ProtoContract]
+	public partial class M2C_Interrupt: ProtoObject, IActorMessage
+	{
+		[ProtoMember(1)]
+		public int Error { get; set; }
+
+		[ProtoMember(2)]
+		public int ConfigId { get; set; }
+
+		[ProtoMember(3)]
+		public long Timestamp { get; set; }
+
+		[ProtoMember(4)]
+		public long UnitId { get; set; }
+
+	}
+
 	public static class OuterMessage
 	{
 		 public const ushort HttpGetRouterResponse = 10002;
@@ -593,5 +740,12 @@ namespace ET
 		 public const ushort C2A_LoginAccount = 10038;
 		 public const ushort A2C_LoginAccount = 10039;
 		 public const ushort A2C_Disconnect = 10040;
+		 public const ushort C2M_UseSkill = 10041;
+		 public const ushort M2C_UseSkill = 10042;
+		 public const ushort M2C_AddBuff = 10043;
+		 public const ushort M2C_Damage = 10044;
+		 public const ushort M2C_ChangeSkillGroup = 10045;
+		 public const ushort M2C_RemoveBuff = 10046;
+		 public const ushort M2C_Interrupt = 10047;
 	}
 }

@@ -13,6 +13,7 @@ namespace ET
         public Dictionary<long, Dictionary<string, StartSceneConfig>> ClientScenesByName = new Dictionary<long, Dictionary<string, StartSceneConfig>>();
 
         public StartSceneConfig LocationConfig;
+        public StartSceneConfig LoginCenterConfig;
 
         public List<StartSceneConfig> Realms = new List<StartSceneConfig>();
         
@@ -54,6 +55,9 @@ namespace ET
                         break;
                     case SceneType.Location:
                         this.LocationConfig = startSceneConfig;
+                        break;
+                    case SceneType.LoginCenter:
+                        this.LoginCenterConfig = startSceneConfig;
                         break;
                     case SceneType.Robot:
                         this.Robots.Add(startSceneConfig);

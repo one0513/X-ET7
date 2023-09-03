@@ -22,14 +22,14 @@ namespace ET.Client
             {
                 if (Input.GetMouseButtonDown(1))
                 {
-                    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                    /*Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                     RaycastHit hit;
                     if (Physics.Raycast(ray, out hit, 1000, self.mapMask))
                     {
                         C2M_PathfindingResult c2MPathfindingResult = new C2M_PathfindingResult();
                         c2MPathfindingResult.Position = hit.point;
                         self.ClientScene().GetComponent<SessionComponent>().Session.Send(c2MPathfindingResult);
-                    }
+                    }*/
                 }
 
                 if (Input.GetKeyDown(KeyCode.R))

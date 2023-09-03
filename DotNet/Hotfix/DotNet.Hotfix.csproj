@@ -40,5 +40,10 @@
         <ProjectReference Include="..\Loader\DotNet.Loader.csproj" />
         <ProjectReference Include="..\Model\DotNet.Model.csproj" />
     </ItemGroup>
+    <ItemGroup>
+      <Reference Include="UnityEngine.CoreModule">
+        <HintPath>..\..\..\..\..\UnityEditor\2021.3.16f1c1\Editor\Data\Managed\UnityEngine\UnityEngine.CoreModule.dll</HintPath>
+      </Reference>
+    </ItemGroup>
 
 </Project>

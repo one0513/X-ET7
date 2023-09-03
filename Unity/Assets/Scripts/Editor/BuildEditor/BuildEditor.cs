@@ -184,6 +184,10 @@ namespace ET
 			{
 				ToolsEditor.Proto2CS();
 			}
+			if (GUILayout.Button("导出属性配置"))
+			{
+				AttrExporter.Export();
+			}
 			
 			EditorGUILayout.BeginHorizontal();
 			{

@@ -1,0 +1,124 @@
+[
+  {
+    "Id": 1001,
+    "DamageTarget": 2,
+    "Name": "Skill_Name_NormalAttack",
+    "Icon": "UI/UICommon/Atlas/SkillIcon/Atlas/skill_normal_attack.png",
+    "DefaultGroup": "Start",
+    "InterruptGroup": "Interrupt",
+    "RareLv": 0,
+    "Lv": 0,
+    "Description": "Skill_Desc_NormalAttack",
+    "CDTime": 0,
+    "Mode": 0,
+    "PreviewType": 1,
+    "PreviewRange": [
+      5,
+      2
+    ]
+  },
+  {
+    "Id": 1002,
+    "DamageTarget": 2,
+    "Name": "Skill_Name_NormalAttack",
+    "Icon": "UI/UICommon/Atlas/SkillIcon/Atlas/skill_normal_attack.png",
+    "DefaultGroup": "Start",
+    "InterruptGroup": "Interrupt",
+    "RareLv": 0,
+    "Lv": 0,
+    "Description": "Skill_Desc_NormalAttack",
+    "CDTime": 0,
+    "Mode": 0,
+    "PreviewType": 2,
+    "PreviewRange": [
+      5,
+      1
+    ]
+  },
+  {
+    "Id": 1003,
+    "DamageTarget": 2,
+    "Name": "Skill_Name_NormalAttack",
+    "Icon": "UI/UICommon/Atlas/SkillIcon/Atlas/skill_normal_attack.png",
+    "DefaultGroup": "Start",
+    "InterruptGroup": "Interrupt",
+    "RareLv": 0,
+    "Lv": 0,
+    "Description": "Skill_Desc_NormalAttack",
+    "CDTime": 0,
+    "Mode": 0,
+    "PreviewType": 2,
+    "PreviewRange": [
+      5,
+      1
+    ]
+  },
+  {
+    "Id": 1004,
+    "DamageTarget": 2,
+    "Name": "Skill_Name_NormalAttack",
+    "Icon": "UI/UICommon/Atlas/SkillIcon/Atlas/skill_normal_attack.png",
+    "DefaultGroup": "Start",
+    "InterruptGroup": "Interrupt",
+    "RareLv": 0,
+    "Lv": 0,
+    "Description": "Skill_Desc_NormalAttack",
+    "CDTime": 0,
+    "Mode": 1,
+    "PreviewType": 0,
+    "PreviewRange": [
+      5
+    ]
+  },
+  {
+    "Id": 1005,
+    "DamageTarget": 2,
+    "Name": "Skill_Name_NormalAttack",
+    "Icon": "UI/UICommon/Atlas/SkillIcon/Atlas/skill_normal_attack.png",
+    "DefaultGroup": "Start",
+    "InterruptGroup": "Interrupt",
+    "RareLv": 0,
+    "Lv": 0,
+    "Description": "Skill_Desc_NormalAttack",
+    "CDTime": 0,
+    "Mode": 1,
+    "PreviewType": 0,
+    "PreviewRange": [
+      5
+    ]
+  },
+  {
+    "Id": 1006,
+    "DamageTarget": 2,
+    "Name": "Skill_Name_NormalAttack",
+    "Icon": "UI/UICommon/Atlas/SkillIcon/Atlas/skill_normal_attack.png",
+    "DefaultGroup": "Start",
+    "InterruptGroup": "Interrupt",
+    "RareLv": 0,
+    "Lv": 0,
+    "Description": "Skill_Desc_NormalAttack",
+    "CDTime": 0,
+    "Mode": 1,
+    "PreviewType": 0,
+    "PreviewRange": [
+      5
+    ]
+  },
+  {
+    "Id": 1007,
+    "DamageTarget": 2,
+    "Name": "Skill_Name_NormalAttack",
+    "Icon": "UI/UICommon/Atlas/SkillIcon/Atlas/skill_normal_attack.png",
+    "DefaultGroup": "Start",
+    "InterruptGroup": "Interrupt",
+    "RareLv": 0,
+    "Lv": 0,
+    "Description": "Skill_Desc_NormalAttack",
+    "CDTime": 0,
+    "Mode": 0,
+    "PreviewType": 3,
+    "PreviewRange": [
+      2
+    ]
+  }
+]
